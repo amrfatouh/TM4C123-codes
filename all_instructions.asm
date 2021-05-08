@@ -3,7 +3,7 @@ ADD R0, R1, #2
 ADD R0, R1 ;add R0 and R1 and store the result in R0
 ADC ;?? (doctor's slides)
 SUB R0, R0, R1
-CMP
+CMP	
 SBC ;?? (doctor's slides)
 MUL R0, R0, R1
 
