@@ -1,0 +1,18 @@
+PIN0    EQU     0x0004
+PIN1    EQU     0x0008
+PIN2    EQU     0x0010
+PIN3    EQU     0x0020
+PIN4    EQU     0x0040
+PIN5    EQU     0x0080
+PIN6    EQU     0x0100
+PIN7    EQU     0x0200
+
+LDR R0, =PIN2
+LDR R0, [R0]
+LDR R1, =PIN3
+LDR R1, [R1]
+
+EOR R0, R1
+
+LDR R1, =PIN4
+STR R0, [R1]
