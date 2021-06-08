@@ -30,7 +30,7 @@ GPIO_PORTF_PCTL_R       EQU			0x4002552C
 
 ;analog mode select
 GPIO_PORTF_AMSEL_R      EQU    	0x40025528
-;??
+;to keep the ADC module isolated so as to protect it.
 SYSCTL_RCGC2_R          EQU		  0x400FE108
 
 ;SYSTICK
