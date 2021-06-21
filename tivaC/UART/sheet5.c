@@ -26,8 +26,8 @@
 
 // in UART0_CTL_R (UART 0 control register):
 // bit 0 => UART 0 Enable
-// bit 9 => UART transmit enable
-// bit 10 => UART receive enable
+// bit 8 => UART transmit enable
+// bit 9 => UART receive enable
 
 // in GPIO_PORTA_PCTL_R:
 // bits (0-3) => set alternate function of bit 0 in Port A
