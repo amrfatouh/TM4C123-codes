@@ -24,6 +24,11 @@
 // bit 4 => FIFO enable
 // bit 5,6 => frame width: 5 or 6 or 7 or 8 bits
 
+// in UART0_CTL_R (UART 0 control register):
+// bit 0 => UART 0 Enable
+// bit 9 => UART transmit enable
+// bit 10 => UART receive enable
+
 // in GPIO_PORTA_PCTL_R:
 // bits (0-3) => set alternate function of bit 0 in Port A
 // bits (4-7) => set alternate function of bit 1 in Port A
@@ -38,7 +43,7 @@ void UART0_Init(void)
   UART0_CTL_R &= ~UART_CTL_UARTEN;                                //disable UART 0
   UART0_IBRD_R = 104;                                             //IBRD = int(16,000,000 / (16 * 9600)) = int(104.16666666666)
   UART0_FBRD_R = 11;                                              //FBRD = floor(0.16666666666 * 64 + 0.5) = 11
-  UART0_LCRH_R = (UART_LCRH_WLEN_8 | UART_LCRH_FEN);              //disable parity - enable FIFO - 8 bits
+  UART0_LCRH_R = (UART_LCRH_WLEN_8 | UART_LCRH_FEN);              //disable parity - 1 stop bit - enable FIFO - 8 bits
   UART0_CTL_R |= (UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN); //enable UART
 
   GPIO_PORTA_AFSEL_R |= GPIO_PA10_M; // enable alternate function
