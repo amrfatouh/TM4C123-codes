@@ -44,6 +44,12 @@ MOV R0, R1 ;put R1 content into R0
 CMP R0, R1
 CMP R0, #0
 BGT branchName
+BGE branchName
+BLT branchName
+BLE branchName
+BEQ branchName
+BNE branchName
+MOVGT PC, #28 ;put 28 into PC if greater than
 B branchName
 BX LR
 
@@ -53,3 +59,5 @@ PUSH {R0-R2} ;push R2 then R1 then R0 into the stack
 POP {R0} ;POP stack into R0
 POP {R0, R1} ;pop stack into R0 then into R1
 POP {R0-R2} ;pop stack into R0 then R1 then R2
+
+z DCD 0
