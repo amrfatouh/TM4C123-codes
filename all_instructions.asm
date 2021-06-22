@@ -6,6 +6,7 @@ SUB R0, R0, R1
 CMP	
 SBC ;?? (doctor's slides)
 MUL R0, R0, R1
+DIVU R0, R1 ;R0 / R1
 
 ADDS R0, #1 ;adds 1 to R0 and check if it's zero, it uses the branch statement after it 
 SUBS R0, #1 ;subtract 1 from R0 and uses the next branch statement
@@ -33,7 +34,7 @@ LDRB R0, [R1] ;byte
 LDRSH R0, [R1] ;signed half word (sign extend)
 LDRSB R0, [R1] ;signed byte
 LDRD R0, [R1] ;data (64-bit [2 registers])
-STR R0, [R1] ;store one word from address stored in R1 into R0
+STR R0, [R1] ;store data in R0 into the place in memory whose address is in R1
 STRH R0, [R1]	;half word
 STRB R0, [R1] ;byte
 MOV R0, #5 ;put 5 into R0
