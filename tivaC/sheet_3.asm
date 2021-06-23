@@ -76,6 +76,7 @@ SW1_Input
 ;6- clear the alternate function bits (GPIO_PORTF_AFSEL_R)
 ;7- set the digital enable of the LEDs (GPIO_PORTF_DEN_R)
 ;8- set the data of the leds (GPIO_PORTF_DATA_R)
+;(switch) 9- set pull up resistor in case of switch (GPIO_PORTF_PUR_R)
 
 RGBLED_Init
 
@@ -91,7 +92,7 @@ RGBLED_Init
 	;set bits you want to change to 1
 	;not needed in this application (not needed in applications that use LEDs)
 	LDR R1, =GPIO_PORTF_LOCK_R
-	LDR R0, =0x4C4F434B
+	LDR R0, =GPIO_LOCK_KEY
 	STR R0, [R1]
 
   ; allow changing to port F
@@ -106,7 +107,7 @@ RGBLED_Init
 	BIC R0, R0, #0x0E
 	STR R0, [R1]
 	
-	;clear port F control (??)
+	;clear port F control (don't select any alternate function type)
 	LDR R1, =GPIO_PORTF_PCTL_R
 	LDR R0, [R1]
 	LDR R2, =0x0000FFF0
@@ -152,7 +153,7 @@ SW1_Init
 	
 	;set the lock key
 	LDR R1, =GPIO_PORTF_LOCK_R
-	LDR R0, =0x4C4F434B
+	LDR R0, =GPIO_LOCK_KEY
 	STR R0, [R1]
 
   ;allow writing to port F
