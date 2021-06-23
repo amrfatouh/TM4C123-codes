@@ -10,7 +10,7 @@ void EnableInterrupts(void);
 uint8_t counter = 0;
 uint32_t RGB_color[8] = {0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E};
 //                       0000  0010  0100  0110  1000  1010  1100  1110
-//                       off   red   green yellw blue  pink  cyan  white
+//                       off   red   blue  pink  green yellw cyan  white
 
 void PortF_init(void)
 {
@@ -63,7 +63,7 @@ void PortF_init(void)
   // bits(29-31): priority of Port G
   // write in bits(21-23) the priority number(0-7) of Port F
   // in NVIC_PRI0_R, priority of Port A(bits 5-7), Port B(bits 13-15), Port C(bits 21-23), Port D(bits 29-31) exist
-  // bits other than bits mentioned are reserved, so if you can't write on them even if you write the instruction to do so
+  // bits other than bits mentioned are reserved, so you can't write on them even if you write the instruction to do so
   // in NVIC_SYS_PRI3_R, bits(29-31) represents Systick priority
 
   // in NVIC_EN0_R (enable register):
@@ -76,7 +76,7 @@ void PortF_init(void)
   // - set interrupt event register [GPIO_PORTF_IEV_R] (falling/rising edge for edge sensitive interrupts - low/high level for level sensitive interrupts)
   // - clear interrupt [GPIO_PORTF_ICR_R]
   // - arm interrupt on the pin [GPIO_PORTF_IM_R]
-  // - set priority of the interrupt [GPIO_PORTF_PRI7_R]
+  // - set priority of the interrupt [NVIC_PRI7_R]
   // - enable the interrupt for Port F [NVIC_EN0_R]
   // - enable interrupts globally using function EnableInterrupts()
   // - write the handler for the interrupt [GPIOF_Handler()]
